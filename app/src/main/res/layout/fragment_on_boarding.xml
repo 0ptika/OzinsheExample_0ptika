@@ -4,15 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".OnBoardingFragment"
+    tools:context=".presentation.onbouading.OnBoardingFragment"
     android:background="#575252">
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager2WelcomeFragment"
+        android:id="@+id/viewPager2OnboardingFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSkipOnboardingFragment"
        android:layout_width="wrap_content"
        android:layout_height="24dp"
        android:layout_gravity="end"
@@ -45,6 +46,7 @@
         app:selectedDotColor="@color/primary_300" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnNextOnboardingFragment"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_gravity="bottom"
