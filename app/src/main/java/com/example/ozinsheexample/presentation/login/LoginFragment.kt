@@ -6,13 +6,17 @@ import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.ozinsheexample.R
+import com.example.ozinsheexample.data.model.LoginRequest
 import com.example.ozinsheexample.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
+    private val viewModel : LoginViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,13 +29,26 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.loginResponse.observe(viewLifecycleOwner){
+            Toast.makeText(requireContext(),"$it" , Toast.LENGTH_SHORT).show()
+        }
+        viewModel.loginResponse.observe(viewLifecycleOwner)
+
         binding.btnShowPassword.setOnClickListener {
             togglePasswordVisibility()
         }
 
         binding.btnLogin.setOnClickListener {
-            validationEmail(emailValidation(binding.editTextEmail.text.toString()))
-            validationPassword(binding.editTextPassword.text.toString())
+            val email = binding.editTextEmail.text.toString()
+            val password = binding.editTextPassword.text.toString()
+
+            val emailIsValid = emailValidation(email)
+            val passwordIsValid = validationPassword(password)
+            if (emailIsValid && passwordIsValid){
+                viewModel.loginUser(email,password)
+            }else {
+                validationEmail(isVisible)
+            }
         }
     }
 
