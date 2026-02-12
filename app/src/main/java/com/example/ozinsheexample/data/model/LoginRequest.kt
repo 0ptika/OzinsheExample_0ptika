@@ -5,3 +5,4 @@ data class LoginRequest(
     val password: String //  "password": "qwerty"
 )
 
+// unable to resolve host "api.ozinshe.com" No address associated with hostname

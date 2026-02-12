@@ -1,6 +1,7 @@
 package com.example.ozinsheexample.presentation.login
 
 import android.os.Bundle
+import android.os.Message
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
@@ -30,9 +31,12 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.loginResponse.observe(viewLifecycleOwner){
+            binding.tvErrorTextPasswordAndServer.visibility = View.GONE
             Toast.makeText(requireContext(),"$it" , Toast.LENGTH_SHORT).show()
         }
-        viewModel.loginResponse.observe(viewLifecycleOwner)
+        viewModel.errorResponse.observe(viewLifecycleOwner){
+            showError(it)
+        }
 
         binding.btnShowPassword.setOnClickListener {
             togglePasswordVisibility()
@@ -92,6 +96,10 @@ class LoginFragment : Fragment() {
         }
 
 
+    }
+    fun showError(message: String){
+        binding.tvErrorTextPasswordAndServer.text = message
+        binding.tvErrorTextPasswordAndServer.visibility = View.VISIBLE
     }
 
 

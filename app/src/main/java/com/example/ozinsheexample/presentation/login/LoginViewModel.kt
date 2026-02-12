@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ozinsheexample.data.ApiService
 import com.example.ozinsheexample.data.ServiceBuilder
+import com.example.ozinsheexample.data.model.LoginRequest
 import com.example.ozinsheexample.data.model.LoginResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,7 +22,7 @@ class LoginViewModel: ViewModel() {
         viewModelScope.launch(Dispatchers.IO){
             val response = ServiceBuilder.buildService(ApiService::class.java)
 
-                runCatching { response.loginUser(email,password) }
+                runCatching { response.loginUser(LoginRequest(email, password)) }
                 .onSuccess {  _loginResponse.postValue(it) }
                 .onFailure { _errorResponse.postValue(it.message) }
 
