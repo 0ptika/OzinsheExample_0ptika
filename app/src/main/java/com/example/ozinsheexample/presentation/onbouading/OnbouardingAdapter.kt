@@ -17,11 +17,14 @@ class OnbouardingAdapter(): RecyclerView.Adapter<OnbouardingAdapter.OnboardingVi
     }
 
     inner class OnboardingViewHolder(private val binding: ItemViewpagerOnboardingBinding): RecyclerView.ViewHolder(binding.root){
-        fun bindItem(onbourdingModel: OnbourdingModel){
-            binding.tvTitleOnbourding.text = onbourdingModel.title
-            binding.tvTitleOnbourding.text = onbourdingModel.description
-            binding.imgTvOnboarding.setImageResource(onbourdingModel.imageId)
+
+        fun bindItem(model: OnbourdingModel) {
+            binding.tvTitleOnbourding.text = model.title
+            binding.tvDiscriptionOnbourding.text = model.description
+            binding.imgTvOnboarding.setImageResource(model.imageId)
         }
+
+
 
     }
 

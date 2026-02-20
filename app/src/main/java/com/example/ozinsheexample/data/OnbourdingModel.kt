@@ -1,13 +1,9 @@
 package com.example.ozinsheexample.data
 
-import android.R
-import android.media.Image
-import android.media.MediaDescription
-import androidx.appcompat.widget.DialogTitle
-import kotlinx.coroutines.internal.OpDescriptor
+import androidx.annotation.DrawableRes
 
 data class OnbourdingModel(
-    val imageId: Int ,
-    val title: String ,
-    val description: String
+    @DrawableRes val imageId: Int,
+    val description: String,
+    val title: String = "ÖZINŞE-ге қош келдің!"
 )

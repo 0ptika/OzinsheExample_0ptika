@@ -1,5 +1,6 @@
 package com.example.ozinsheexample.presentation.onbouading
 
+import OnbourdingInfoList
 import com.example.ozinsheexample.R
 
 import android.os.Bundle
@@ -10,7 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
-import com.example.ozinsheexample.data.OnbourdingInfoList
+import com.example.ozinsheexample.presentation.onbouading.OnbouardingAdapter
+
 import com.example.ozinsheexample.databinding.FragmentOnBoardingBinding
 
 class OnBoardingFragment : Fragment() {
