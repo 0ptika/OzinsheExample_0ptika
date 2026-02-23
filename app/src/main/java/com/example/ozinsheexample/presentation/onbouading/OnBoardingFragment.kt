@@ -14,6 +14,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.ozinsheexample.presentation.onbouading.OnbouardingAdapter
 
 import com.example.ozinsheexample.databinding.FragmentOnBoardingBinding
+import com.example.ozinsheexample.provideNavigationHost
 
 class OnBoardingFragment : Fragment() {
     private lateinit var binding: FragmentOnBoardingBinding
@@ -28,6 +29,10 @@ class OnBoardingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        provideNavigationHost()?.apply {
+            setNavigationVisibility(false)
+
+        }
         val adapter = OnbouardingAdapter()
         adapter.submitList(OnbourdingInfoList.onbourdingModelist)
         binding.viewPager2OnboardingFragment.adapter = adapter

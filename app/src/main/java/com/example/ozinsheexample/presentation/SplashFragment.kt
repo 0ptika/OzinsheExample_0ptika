@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.ozinsheexample.R
+import com.example.ozinsheexample.provideNavigationHost
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+
 
 
 class SplashFragment : Fragment() {
@@ -22,8 +24,22 @@ class SplashFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_splash, container, false)
     }
 
+    override fun onStart() {
+        super.onStart()
+        provideNavigationHost()?.apply {
+            setNavigationVisibility(false)
+
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        provideNavigationHost()?.apply {
+            setNavigationVisibility(false)
+
+        }
+
+
         lifecycleScope.launch {
             delay(3000)
             findNavController().navigate(R.id.action_splashFragment_to_onBoardingFragment)
