@@ -50,6 +50,14 @@ class OnBoardingFragment : Fragment() {
             }
         }
 
+        binding.btnNextOnboardingFragment.setOnClickListener {
+            findNavController().navigate(R.id.action_onBoardingFragment_to_loginFragment1)
+        }
+
+        binding.btnSkipOnboardingFragment.setOnClickListener {
+            findNavController().navigate(R.id.action_onBoardingFragment_to_loginFragment1)
+        }
+
 
         binding.dotsIndicator.setViewPager2(binding.viewPager2OnboardingFragment)
 

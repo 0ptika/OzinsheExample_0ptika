@@ -36,10 +36,15 @@ class LoginFragment : Fragment() {
             binding.tvErrorTextPasswordAndServer.visibility = View.GONE
             Toast.makeText(requireContext(),"$it" , Toast.LENGTH_SHORT).show()
             SharedProvider(requireContext()).saveToken(it.accessToken)
+            findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
 
         }
         viewModel.errorResponse.observe(viewLifecycleOwner){
             showError(it)
+        }
+
+        binding.btnBackLogin.setOnClickListener {
+            findNavController().navigate(R.id.onBoardingFragment)
         }
 
         binding.btnShowPassword.setOnClickListener {
